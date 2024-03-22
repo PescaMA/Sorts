@@ -1,6 +1,6 @@
 #include<iostream>
 #include <vector>
 
-void mergeSort(std::vector<int>& v){
+void mergeSort(std::vector<double>& v){
 
 }

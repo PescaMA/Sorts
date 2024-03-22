@@ -1,6 +1,6 @@
 #include<iostream>
 #include <vector>
 
-void shellSort(std::vector<int>& v){
+void shellSort(std::vector<double>& v){
 
 }
