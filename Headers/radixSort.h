@@ -1,14 +1,14 @@
 #include<iostream>
 #include <vector>
-int base10(const std::vector<int>& v){
+int base10(){
     return 10;
 }
-int base16(const std::vector<int>& v){
+int base16(){
     return 10;
 }
-int base2power16(const std::vector<int>& v){
+int base2power16(){
     return 65536;
 }
-void radixSort(std::vector<int>& v, int (*chooseBase)(const std::vector<int>&)){
+void radixSort(std::vector<int>& v, int (*chooseBase)()){
 
 }

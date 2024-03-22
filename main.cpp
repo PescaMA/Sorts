@@ -25,9 +25,9 @@ void outPutResult(const std::string& sortName, std::vector<int>& v,
 
     std::sort(v.begin(),v.end());
     if(sortedVector == v)
-        std::cout << "Correctly sorted\n";
+        std::cout << "Correctly sorted\n\n";
     else
-        std::cout << "Incorrectly sorted\n";
+        std::cout << "Incorrectly sorted\n\n";
 }
 void runTest(std::string sortName, std::vector<int> v,void (*namedSort)(std::vector<int>&)){
     std::vector<int> correctSort = v;
@@ -35,13 +35,21 @@ void runTest(std::string sortName, std::vector<int> v,void (*namedSort)(std::vec
     namedSort(v);
     ///outPutResult(sortName,correctSort,v,startTime);
 }
-void runTest(std::string sortName, std::vector<int> v, int (*choosePivot)(const std::vector<int>&),
-             void (*namedSort)(std::vector<int>&, int (*)(const std::vector<int>&))){
+void runTest(std::string sortName, std::vector<int> v, int (*choosePivot)(const int&,const int&,const std::vector<int>&),
+             void (*namedSort)(std::vector<int>&, int (*)(const int&,const int&,const std::vector<int>&))){
     std::vector<int> correctSort = v;
     ///unsigned long long startTime = getTimeMCS();
     namedSort(v,choosePivot);
     ///outPutResult(sortName,correctSort,v,startTime);
 }
+void runTest(std::string sortName, std::vector<int> v, int (*choosePivot)(),
+             void (*namedSort)(std::vector<int>&, int (*)())) {
+    std::vector<int> correctSort = v;
+    ///unsigned long long startTime = getTimeMCS();
+    namedSort(v,choosePivot);
+    ///outPutResult(sortName,correctSort,v,startTime);
+}
+
 void runAllTests(std::vector<int>& v){
     runTest("Bogo sort", v, bogoSort);
     runTest("Counting sort", v, countingSort);
@@ -66,6 +74,8 @@ int main()
 {
     srand((unsigned)time(NULL));
     std::vector<int> v = {10,9,8,7,6,5,4,32,1};
-    runAllTests(v);
+    std::vector<int> v100 = {5344,4987,223,2040,557,8178,3016,6922,3000,1401,832,9940,1957,8532,6954,8148,7046,6285,3604,4991,8351,1267,5480,5907,9246,590,8728,4930,6992,434,5405,4206,1980,4070,8444,7774,1232,3661,5008,7702,8223,7960,9665,9147,6568,4556,8374,511,936,1503,6307,9782,5194,91,6252,6216,7347,9989,7211,7701,5827,9435,5899,8525,3928,8083,9086,1985,9474,2000,298,7870,963,8552,2054,413,8337,3833,8948,9988,5245,157,6582,6122,2695,4322,704,2394,2334,5463,3135,4615,3039,5977,1312,927,8805,7727,1968,9653};
+    ///runAllTests(v);
+    runAllTests(v100);
     return 0;
 }
