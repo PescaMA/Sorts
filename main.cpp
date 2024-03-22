@@ -42,12 +42,12 @@ void runTest(std::string sortName, std::vector<int> v, int (*choosePivot)(const 
     namedSort(v,choosePivot);
     ///outPutResult(sortName,correctSort,v,startTime);
 }
-void runTest(std::string sortName, std::vector<int> v, int (*choosePivot)(),
-             void (*namedSort)(std::vector<int>&, int (*)())) {
+void runTest(std::string sortName, std::vector<int> v, const int& base,
+             void (*namedSort)(std::vector<int>&, const int&)) {
     std::vector<int> correctSort = v;
-    ///unsigned long long startTime = getTimeMCS();
-    namedSort(v,choosePivot);
-    ///outPutResult(sortName,correctSort,v,startTime);
+    unsigned long long startTime = getTimeMCS();
+    namedSort(v,base);
+    outPutResult(sortName,correctSort,v,startTime);
 }
 
 void runAllTests(std::vector<int>& v){
@@ -66,9 +66,9 @@ void runAllTests(std::vector<int>& v){
     runTest("Quick sort (pivotMedian3Random)", v, pivotMedian3Random, quickSort);
     runTest("Quick sort (pivotMedian5Random)", v, pivotMedian5Random, quickSort);
 
-    runTest("Radix sort (base 10)", v, base10, radixSort);
-    runTest("Radix sort (base 16)", v, base16, radixSort);
-    runTest("Radix sort (base 2^16)", v, base2power16, radixSort);
+    runTest("Radix sort (base 10)", v, 10, radixSort);
+    runTest("Radix sort (base 16)", v, 16, radixSort);
+    runTest("Radix sort (base 2^16)", v, (1 << 16), radixSort);
 }
 int main()
 {
