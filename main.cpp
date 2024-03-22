@@ -1,4 +1,9 @@
+#include <vector>
 #include <iostream>
+#include <random>
+#include "Headers/insertionSort.h"
+#include "Headers/quickSort.h"
+
 #include <chrono>
 
 unsigned long long getTimeMS()
@@ -13,6 +18,8 @@ std::cout << "a";
 
 int main()
 {
-    std::cout << getTimeMS();
+    srand((unsigned)time(NULL));
+    std::vector<int> v = {10,9,8,7,6,5,4,32,1};
+    quickSort(v,pivotMedian5Random);
     return 0;
 }
