@@ -1,3 +1,24 @@
+#include <iostream>
+#include <vector>
+
+int medianThree(int a, int b, int c) {
+    if ((a > b) ^ (a > c))
+        return a;
+    if ((b < a) ^ (b < c))
+        return b;
+    return c;
+}
+void insertionSortCopy(std::vector<int>& v){
+    for(int unsigned i=1;i<v.size();i++){
+        for(int j=i;j > 0 && v[j] <v[j-1];j--)
+            std::swap(v[j],v[j-1]);
+    }
+}
+int medianFive(std::vector<int> v){
+    insertionSortCopy(v);
+    return v[2];
+}
+
 int pivotFirst(const std::vector<int>& v){
     return v[0];
 }
@@ -6,18 +27,6 @@ int pivotLast(const std::vector<int>& v){
 }
 int pivotRandom(const std::vector<int>& v){
     return v[rand() % v.size()];
-}
-int medianThree(int a, int b, int c) {
-    if ((a > b) ^ (a > c))
-        return a;
-    else if ((b < a) ^ (b < c))
-        return b;
-    else
-        return c;
-}
-int medianFive(std::vector<int> v){
-    insertionSort(v);
-    return v[2];
 }
 int pivotMedian3Normal(const std::vector<int>& v){
     return medianThree(v[0], v[v.size()- 1], v[v.size()/2]);
@@ -38,5 +47,5 @@ int pivotMedian5Random(const std::vector<int>& v){
 
 
 void quickSort(std::vector<int>& v, int (*choosePivot)(const std::vector<int>&)){
-    std::cout << choosePivot(v);
+    std::cout << choosePivot(v) << '\n';
 }
