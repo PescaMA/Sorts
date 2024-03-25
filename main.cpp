@@ -33,9 +33,9 @@ void outPutResult(const std::string& sortName, std::vector<double>& v,
 }
 void runTest(std::string sortName, std::vector<double> v,void (*namedSort)(std::vector<double>&)){
     std::vector<double> correctSort = v;
-    ///unsigned long long startTime = getTimeMCS();
+    unsigned long long startTime = getTimeMCS();
     namedSort(v);
-    ///outPutResult(sortName,correctSort,v,startTime);
+    outPutResult(sortName,correctSort,v,startTime);
 }
 void runTest(std::string sortName, std::vector<double> v, double (*choosePivot)(const int&,const int&,const std::vector<double>&),
              void (*namedSort)(std::vector<double>&, double (*)(const int&,const int&,const std::vector<double>&))){
@@ -76,6 +76,9 @@ void runAllTests(const std::vector<double>& v){
     catch(const std::invalid_argument& e) {
         std::cerr << "Invalid RadixSort argument: " << e.what() << '\n';
     }
+
+
+    std::cout << "\nSuccessfully ran tests.\n\n\n";
 }
 void runInputs(){
     std::ifstream fin("tests/tests.in");
