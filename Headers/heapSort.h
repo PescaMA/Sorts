@@ -4,7 +4,7 @@
 
 void heapSort(std::vector<double>& v){
     std::priority_queue<double> pq;
-    for( int el:v)
+    for(double el:v)
         pq.push(-el);
     int i = 0;
     while(!pq.empty()){

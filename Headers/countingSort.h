@@ -5,7 +5,7 @@
 
 void countingSort(std::vector<double>& v){
     for(auto &elem:v)
-        if(elem != (int)elem)
+        if(elem != (long long)elem)
             throw std::invalid_argument("Expected integer values");
 
     double mn, mx;

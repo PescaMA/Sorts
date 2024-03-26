@@ -3,16 +3,16 @@
 #include <map>
 void radixSort(std::vector<double>& v, int const& base){
     for(auto &elem:v)
-        if(elem != (int)elem)
+        if(elem != (long long)elem)
             throw std::invalid_argument("Expected integer values");
 
-    std::map<int,std::vector<int>> buckets;
-    int power = 1;
+    std::map<int,std::vector<long long>> buckets;
+    long long power = 1;
     while(true){
 
         bool nonZero = true;
         for(auto &elem:v)
-            if((int)elem / power % base != 0){
+            if((long long)elem / power != 0){
                 nonZero = false;
                 break;
             }
@@ -20,11 +20,11 @@ void radixSort(std::vector<double>& v, int const& base){
             break;
 
         for(auto &elem:v)
-            buckets[(int)elem / power % base].push_back((int)elem);
+            buckets[(long long)elem / power % base].push_back((long long)elem);
 
         int i = 0;
         for(auto &bucket:buckets){
-            for(int &element:bucket.second){
+            for(auto &element:bucket.second){
                 v[i] = element;
                 i++;
             }

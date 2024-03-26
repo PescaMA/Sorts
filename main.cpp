@@ -54,7 +54,16 @@ void runTest(std::string sortName, std::vector<double> v, const int& base,
 
 void runAllTests(const std::vector<double>& v){
     runTest("Bogo sort", v, bogoSort);
-    runTest("Counting sort", v, countingSort);
+
+    try{
+        runTest("Counting sort", v, countingSort);
+    }
+    catch(const std::invalid_argument& e) {
+        std::cerr << "Invalid Counting sort argument: " << e.what() << "\n\n";
+    }
+    catch(const std::runtime_error& e) {
+        std::cerr << "Invalid Counting sort argument: " << e.what() << "\n\n";
+    }
     runTest("Heap sort", v, heapSort);
     runTest("Insertion sort", v, insertionSort);
     runTest("Merge sort", v, mergeSort);
@@ -74,7 +83,7 @@ void runAllTests(const std::vector<double>& v){
     runTest("Radix sort (base 2^16)", v, (1 << 16), radixSort);
     }
     catch(const std::invalid_argument& e) {
-        std::cerr << "Invalid RadixSort argument: " << e.what() << '\n';
+        std::cerr << "Invalid RadixSort argument: " << e.what() << "\n\n";
     }
 
 
