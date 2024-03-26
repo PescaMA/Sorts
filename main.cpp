@@ -15,14 +15,14 @@
 #include "Headers/shellSort.h"
 
 
-long long getTimeMCS()
-{
+long long getTimeMCS(){
     return std::chrono::system_clock::now().time_since_epoch() /
     std::chrono::microseconds(1);
 }
 
 void outPutResult(const std::string& sortName, std::vector<double>& v,
-                  const std::vector<double>& sortedVector, const unsigned long long& startTime){
+                 const std::vector<double>& sortedVector, const unsigned long long& startTime){
+
     std::cout << sortName << " ran in " << getTimeMCS() - startTime << " microseconds.\n";
 
     std::sort(v.begin(),v.end());
@@ -53,6 +53,7 @@ void runTest(std::string sortName, std::vector<double> v, const int& base,
 }
 
 void runAllTests(const std::vector<double>& v){
+<<<<<<< Updated upstream
     runTest("Bogo sort", v, bogoSort);
 
     try{
@@ -64,6 +65,10 @@ void runAllTests(const std::vector<double>& v){
     catch(const std::runtime_error& e) {
         std::cerr << "Invalid Counting sort argument: " << e.what() << "\n\n";
     }
+=======
+    //runTest("Bogo sort", v, bogoSort); maybe run it overnight?
+    runTest("Counting sort", v, countingSort);
+>>>>>>> Stashed changes
     runTest("Heap sort", v, heapSort);
     runTest("Insertion sort", v, insertionSort);
     runTest("Merge sort", v, mergeSort);
