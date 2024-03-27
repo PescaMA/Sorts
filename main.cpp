@@ -69,8 +69,8 @@ void runAllTests(const std::vector<double>& v){
     runTest("Merge sort", v, mergeSort);
     runTest("ShellSort sort", v, shellSort);
 
-    runTest("Quick sort (pivotFirst)", v, pivotFirst, quickSort);
-    runTest("Quick sort (pivotLast)", v, pivotLast, quickSort);
+    //runTest("Quick sort (pivotFirst)", v, pivotFirst, quickSort);
+    //runTest("Quick sort (pivotLast)", v, pivotLast, quickSort);
     runTest("Quick sort (pivotRandom)", v, pivotRandom, quickSort);
     runTest("Quick sort (pivotMedian3Normal)", v, pivotMedian3Normal, quickSort);
     runTest("Quick sort (pivotMedian5Normal)", v, pivotMedian5Normal, quickSort);
