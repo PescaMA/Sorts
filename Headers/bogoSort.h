@@ -15,5 +15,13 @@ void shuffle(std::vector<double>& v, int n){
 
 // Sorts array a[0..n-1] using Bogo sort
 void bogoSort(std::vector<double>& v){
-    while(!isSorted(v, v.size())) shuffle(v, v.size());
+
+    const long long MAX_TIME = 5 * 1000000; /// seconds * 10^6
+    long long startTime = std::chrono::system_clock::now().time_since_epoch() / std::chrono::microseconds(1);
+    while(!isSorted(v, v.size())){
+        shuffle(v, v.size());
+        long long time = std::chrono::system_clock::now().time_since_epoch() / std::chrono::microseconds(1);
+        if ( time - startTime > MAX_TIME)
+            throw std::runtime_error( std::to_string(time-startTime) + " Destroying Universe...");
+    }
 }

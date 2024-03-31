@@ -12,6 +12,7 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-std=c++11" />
 					<Add option="-g" />
 				</Compiler>
 			</Target>
@@ -32,7 +33,19 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Headers/bogoSort.h" />
+		<Unit filename="Headers/countingSort.h" />
+		<Unit filename="Headers/heapSort.h" />
+		<Unit filename="Headers/insertionSort.h" />
+		<Unit filename="Headers/mergeSort.h" />
+		<Unit filename="Headers/quickSort.h" />
+		<Unit filename="Headers/radixSort.h" />
+		<Unit filename="Headers/shellSort.h" />
 		<Unit filename="main.cpp" />
-		<Extensions />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

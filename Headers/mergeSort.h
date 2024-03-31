@@ -5,7 +5,7 @@ void merge_arrays(std::vector<double> &v, int const left, int const mid, int con
     int const subArrayOne = mid - left + 1;
     int const subArrayTwo = right - mid;
 
-    auto *leftArray = new int[subArrayOne], *rightArray = new int[subArrayTwo];
+    auto *leftArray = new double[subArrayOne], *rightArray = new double[subArrayTwo];
 
     for(auto i = 0; i < subArrayOne; i++) leftArray[i] = v[left+i];
     for(auto j = 0; j < subArrayTwo; j++) rightArray[j] = v[mid+1+j];
@@ -38,6 +38,8 @@ void merge_arrays(std::vector<double> &v, int const left, int const mid, int con
         indexOfSubArrayTwo++;
         indexOfMergedArray++;
     }
+    delete[] leftArray;
+    delete[] rightArray;
 }
 
 void mergeSort(std::vector<double>& v, int const left, int const right){
