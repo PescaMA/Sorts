@@ -73,11 +73,11 @@ void runAllTests(const std::vector<double>& v){
         std::cerr << "Invalid Counting sort argument: " << e.what() << "\n\n";
     }
 
-    try{
+    /*try{
         runTest("Insertion sort", v,correctSort, insertionSort);
     }catch(const std::runtime_error& e) {
         std::cerr << "Insertion sort took too long: " << e.what() << "\n\n";
-    }
+    }*/
 
 
     runTest("Heap sort", v,correctSort, heapSort);
@@ -104,7 +104,7 @@ void runAllTests(const std::vector<double>& v){
         std::cerr << "Invalid RadixSort argument: " << e.what() << "\n\n";
     }
 
-
+    /*
     try{
         runTest("Insertion sort", v,correctSort, insertionSort);
     }catch(const std::runtime_error& e) {
@@ -115,7 +115,7 @@ void runAllTests(const std::vector<double>& v){
     }catch(const std::runtime_error& e) {
         std::cerr << "Bogo took too long: " << e.what() << "\n\n";
     }
-
+    */
     std::cout << "\nSuccessfully ran tests.\n\n\n";
 }
 void runInputs(){
@@ -134,13 +134,28 @@ void runInputs(){
         }
         std::cout << "----TEST " << i + 1 << " RUNNING:----\n\n";
         runAllTests(v);
-
     }
+}
+
+std::vector<double> GenerateRandomInt(int n){
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::vector<double> integers(n);
+    for (int i = 0; i < n; ++i) {
+        integers[i] = i;
+    }
+    std::shuffle(integers.begin(), integers.end(), gen);
+    return integers;
+}
+
+void runInputsGenerated(){
+    runAllTests(GenerateRandomInt(1e8));
 }
 
 int main()
 {
     srand((unsigned)time(NULL));
-    runInputs();
+    //runInputs();
+    runInputsGenerated();
     return 0;
 }
